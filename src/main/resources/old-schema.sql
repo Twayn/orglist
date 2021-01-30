@@ -1,0 +1,19 @@
+-- create table org (
+--     id          bigint       not null auto_increment,
+--     org_name    varchar(255) not null,
+--     org_type_id bigint       null,
+--     primary key (id)
+-- );
+--
+-- create table org_type (
+--     id   bigint       not null auto_increment,
+--     type varchar(255) not null,
+--     primary key (id)
+-- );
+--
+-- create table audit (
+--     id        bigint       not null auto_increment,
+--     user_name varchar(255) not null,
+--     date      varchar(255) not null,
+--     primary key (id)
+-- );
