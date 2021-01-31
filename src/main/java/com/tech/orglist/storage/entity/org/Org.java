@@ -1,12 +1,12 @@
 package com.tech.orglist.storage.entity.org;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import javax.persistence.*;
+
+import com.tech.orglist.storage.entity.account.Account;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -25,9 +25,19 @@ public class Org {
 	public String orgName;
 
 	@ManyToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name = "org_type_id", referencedColumnName = "id")
 	public OrgType orgType;
 
-	public static Org of(String orgName, String orgType) {
-		return new Org().orgName(orgName).orgType(OrgType.of(orgType));
+	@OneToMany(mappedBy = "org", cascade = {CascadeType.ALL})
+	public List<Account> accounts;
+
+	public static Org of(String orgName, String orgType, String[] accNums) {
+		Org org = new Org().orgName(orgName).orgType(OrgType.of(orgType));
+
+		List<Account> accounts = Stream.of(accNums)
+				.map(acc -> Account.of(acc, org))
+				.collect(Collectors.toList());
+
+		return org.accounts(accounts);
 	}
 }

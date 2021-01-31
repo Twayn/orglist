@@ -21,7 +21,7 @@ public class OrgListController {
 	}
 
 	@GetMapping("/saveorg")
-	void saveOrg(@RequestParam String orgName, @RequestParam String orgType, @RequestParam String userName) {
-		service.save(orgName, orgType, userName);
+	void saveOrg(@RequestParam String orgName, @RequestParam String orgType, @RequestParam String userName, @RequestParam String[] accNums) {
+		service.save(orgName, orgType, userName, accNums);
 	}
 }

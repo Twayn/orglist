@@ -12,6 +12,14 @@ create table org (
     foreign key (org_type_id) references org_type(id)
 );
 
+create table account (
+    id     bigint       not null auto_increment,
+    num    varchar(255) not null,
+    org_id bigint       not null,
+    primary key (id),
+    foreign key (org_id) references org(id)
+);
+
 create table audit (
     id        bigint       not null auto_increment,
     date      timestamp    not null,

@@ -23,9 +23,9 @@ public class OrgListServiceDatabase implements OrgListService {
 	}
 
 	@Override
-	public void save(String orgName, String orgType, String userName) {
+	public void save(String orgName, String orgType, String userName, String[] accNums) {
 		auditService.save(Audit.of(LocalDateTime.now(), AuditType.SAVE, userName));
-		orgRepository.save(Org.of(orgName, orgType));
+		orgRepository.save(Org.of(orgName, orgType, accNums));
 	}
 
 	@Override
