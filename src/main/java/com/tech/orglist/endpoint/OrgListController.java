@@ -16,12 +16,12 @@ public class OrgListController {
 	}
 
 	@GetMapping("/orglist")
-	Iterable<Org> getOrgList(@RequestParam String userName){
+	Iterable<Org> getOrgList(@RequestParam String userName) {
 		return service.getAll(userName);
 	}
 
 	@GetMapping("/saveorg")
-	void saveOrg(@RequestParam String orgName, @RequestParam String orgType, @RequestParam String userName){
+	void saveOrg(@RequestParam String orgName, @RequestParam String orgType, @RequestParam String userName) {
 		service.save(orgName, orgType, userName);
 	}
 }

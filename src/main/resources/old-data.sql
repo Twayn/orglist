@@ -1,5 +1,0 @@
--- begin;
--- INSERT INTO ORG_TYPE (id, type) VALUES (1, 'ИП');
--- INSERT INTO ORG_TYPE (id, type) VALUES (2, 'Большой бизнес');
--- INSERT INTO ORG_TYPE (id, type) VALUES (3, 'Малый бизнес');
--- commit;

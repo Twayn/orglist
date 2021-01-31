@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.tech.orglist.storage.entity.org.Org;
 
 @Repository
-public interface OrgRepository extends CrudRepository<Org, Long> {}
+public interface OrgRepository extends CrudRepository<Org, Long> {
+}
