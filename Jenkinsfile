@@ -10,6 +10,12 @@ pipeline {
                     url: 'https://github.com/Twayn/orglist.git'
             }
         }
+        stage('Gradle build') {
+            steps {
+                echo 'Gradle building...'
+                bat "./gradlew build"
+            }
+        }
         stage('Docker build') {
             steps {
                 echo 'Docker building...'
