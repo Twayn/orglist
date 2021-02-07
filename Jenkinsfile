@@ -31,10 +31,8 @@ pipeline {
         stage('Kubernetes remove previous') {
             steps {
                 echo 'Kubernetes removing previous...'
-                try {
+                catchError {
                     bat "kubectl delete -f kubernetes/orglist.yaml"
-                } catch (err) {
-                    echo err.getMessage()
                 }
             }
         }
