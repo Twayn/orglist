@@ -1,0 +1,39 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: orglist
+  namespace: default
+  labels:
+    app: orglist
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: orglist
+  template:
+    metadata:
+      labels:
+        app: orglist
+    spec:
+      containers:
+        - name: app
+          image: 'twayn/orglist:latest'
+          imagePullPolicy: Always
+      restartPolicy: Always
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: orglist
+  namespace: default
+  labels:
+    app: orglist
+spec:
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 31053
+  selector:
+    app: orglist
+  type: LoadBalancer
