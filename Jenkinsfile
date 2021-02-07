@@ -31,13 +31,17 @@ pipeline {
         stage('Kubernetes remove previous') {
             steps {
                 echo 'Kubernetes removing previous...'
-                bat "kubectl delete -f kubernetes/orglist.yaml"
+                try {
+                    bat "kubectl delete -f kubernetes/orglist.yaml"
+                } catch (err) {
+                    echo err.getMessage()
+                }
             }
         }
         stage('Kubernetes create deployment & service') {
             steps {
                 echo 'Kubernetes creating deployment & service....'
-                bat "kubectl apply -f kubernetes/app.yaml"
+                bat "kubectl apply -f kubernetes/orglist.yaml"
             }
         }
     }
